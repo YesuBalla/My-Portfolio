@@ -10,7 +10,7 @@ const LoadingScreen: React.FC<LoadingProps> = () => {
     const [overlayOpacity, setLoadingOverlayOpacity] = useState(1);
     const [loadingTextOpacity, setLoadingTextOpacity] = useState(1);
     const [startPopupOpacity, setStartPopupOpacity] = useState(0);
-    const [firefoxPopupOpacity, setFirefoxPopupOpacity] = useState(0);
+    // const [firefoxPopupOpacity, setFirefoxPopupOpacity] = useState(0);
     const [webGLErrorOpacity, setWebGLErrorOpacity] = useState(0);
 
     const [showBiosInfo, setShowBiosInfo] = useState(false);
@@ -149,24 +149,24 @@ const LoadingScreen: React.FC<LoadingProps> = () => {
                         <div style={styles.logoContainer}>
                             <div>
                                 <p style={styles.green}>
-                                    <b>Heffernan,</b>{' '}
+                                    <b>Yesu,</b>{' '}
                                 </p>
                                 <p style={styles.green}>
-                                    <b>Henry Inc.</b>
+                                    <b>Balla Inc.</b>
                                 </p>
                             </div>
                         </div>
                         <div style={styles.headerInfo}>
-                            <p>Released: 01/13/2000</p>
-                            <p>HHBIOS (C)2000 Heffernan Henry Inc.,</p>
+                            <p>Released: 20/08/2024</p>
+                            <p>BYBIOS (C)2024 Yesu Balla Inc.,</p>
                         </div>
                     </div>
                     <div style={styles.body} className="loading-screen-body">
-                        <p>HSP S13 2000-2022 Special UC131S</p>
+                        <p>HSP S13 2023-2024 Special UC131S</p>
                         <div style={styles.spacer} />
                         {showBiosInfo && (
                             <>
-                                <p>HSP Showcase(tm) XX 113</p>
+                                <p>BY Showcase(tm) XX 113</p>
                                 <p>Checking RAM : {14000} OK</p>
                                 <div style={styles.spacer} />
                                 <div style={styles.spacer} />
@@ -195,9 +195,9 @@ const LoadingScreen: React.FC<LoadingProps> = () => {
                             <p>
                                 All Content Loaded, launching{' '}
                                 <b style={styles.green}>
-                                    'Henry Heffernan Portfolio Showcase'
+                                    'Yesu Balla Portfolio Showcase'
                                 </b>{' '}
-                                V1.0
+                                V2.0
                             </p>
                         )}
                         <div style={styles.spacer} />
@@ -227,7 +227,7 @@ const LoadingScreen: React.FC<LoadingProps> = () => {
                     <p>But do enjoy what I have done so far :)</p>
                     <div style={styles.spacer} />
                     <div style={styles.spacer} /> */}
-                    <p>Henry Heffernan Portfolio Showcase 2022</p>
+                    <p>Yesu Balla Portfolio Showcase 2024</p>
                     {mobileWarning && (
                         <>
                             <br />
