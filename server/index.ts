@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer');
 const compression = require('compression');
 
 const app = express();
-const port = 8080;
+const port = 3000;
 
 app.use(cors());
 app.use(compression());
@@ -39,8 +39,8 @@ app.post('/api/send-email', (req, res) => {
         .then(() => {
             transporter
                 .sendMail({
-                    from: `"${name}" <henryheffernan.folio@gmail.com>`, // sender address
-                    to: 'henryheffernan@gmail.com, henryheffernan.folio@gmail.com', // list of receivers
+                    from: `"${name}" <keerthyballa7@gmail.com>`, // sender address
+                    to: 'yesushakir@gmail.com, keerthyballa7@gmail.com', // list of receivers
                     subject: `${name} <${email}> ${
                         company ? `from ${company}` : ''
                     } submitted a contact form`, // Subject line
@@ -61,7 +61,7 @@ app.post('/api/send-email', (req, res) => {
         });
 });
 
-// listen to app on port 8080
+// listen to app on port 3000
 app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
+    console.log(`Server is Running at http://localhost:${port}`);
 });

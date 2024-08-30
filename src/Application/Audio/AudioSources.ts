@@ -1,7 +1,7 @@
 import AudioManager from './AudioManager';
 import * as THREE from 'three';
 import UIEventBus from '../UI/EventBus';
-import { Vector3 } from 'three';
+// import { Vector3 } from 'three';
 
 export class AudioSource {
     manager: AudioManager;
