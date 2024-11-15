@@ -5,10 +5,12 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const compression = require('compression');
+require('dotenv').config();
 
 const app = express();
 const port = 3000;
 
+// app.use(cors());
 app.use(cors());
 app.use(compression());
 
@@ -21,45 +23,40 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-// Handle GET requests to /api route
 app.post('/api/send-email', (req, res) => {
     const { name, company, email, message } = req.body;
 
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
-        port: 587,
+        port: 465,
+        secure: true,
         auth: {
             user: process.env.FOLIO_EMAIL,
             pass: process.env.FOLIO_PASSWORD,
         },
+        tls: {
+            rejectUnauthorized: false,
+        },
     });
 
-    transporter
-        .verify()
+    transporter.verify()
         .then(() => {
-            transporter
-                .sendMail({
-                    from: `"${name}" <keerthyballa7@gmail.com>`, // sender address
-                    to: 'yesushakir@gmail.com, keerthyballa7@gmail.com', // list of receivers
-                    subject: `${name} <${email}> ${
-                        company ? `from ${company}` : ''
-                    } submitted a contact form`, // Subject line
-                    text: `${message}`, // plain text body
-                })
-                .then((info) => {
-                    console.log({ info });
-                    res.json({ message: 'success' });
-                })
-                .catch((e) => {
-                    console.error(e);
-                    res.status(500).send(e);
-                });
+            return transporter.sendMail({
+                from: `"${name}" <${process.env.FOLIO_EMAIL}>`,
+                to: 'yesushakir@gmail.com',
+                subject: `${name} <${email}> ${company ? `from ${company}` : ''} submitted a contact form`,
+                text: `${message}`,
+            });
         })
-        .catch((e) => {
-            console.error(e);
-            res.status(500).send(e);
+        .then((info) => {
+            res.json({ message: 'success' });
+        })
+        .catch((error) => {
+            console.error('Email Error:', error);
+            res.status(500).send({ error: 'Failed to send email. Please check your configuration.' });
         });
 });
+
 
 // listen to app on port 3000
 app.listen(port, () => {
