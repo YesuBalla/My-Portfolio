@@ -11,7 +11,14 @@ const app = express();
 const port = 3000;
 
 // app.use(cors());
-app.use(cors());
+// app.use(cors());
+app.use(
+    cors({
+        origin: 'https://www.yesuballa.live',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+    })
+);
 app.use(compression());
 
 // Have Node serve the files for our built React app
