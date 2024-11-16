@@ -10,15 +10,15 @@ require('dotenv').config();
 const app = express();
 const port = 3000;
 
-// app.use(cors());
 app.use(
     cors({
-        origin: 'https://www.yesuballa.live',
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        origin: ['https://yesu-portfolio-innersite.netlify.app', 'http://localhost:3001'],
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization'],
     })
 );
 
+// Handle preflight requests
 app.options('*', cors());
 
 app.use(compression());
